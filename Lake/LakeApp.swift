@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct LakeApp: App {
+    var courseData = CourseData()
+    
+    init() {
+        courseData.load()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView().environmentObject(courseData)
         }
     }
 }

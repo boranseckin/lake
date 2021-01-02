@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var courseData: CourseData
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List {
+                ForEach(courseData.courses) { course in
+                    Section(header: Text(course.name)) {
+                        ForEach(course.assignments) { assignment in
+                            AssignmentRow(assignment: assignment)
+                        }
+                    }
+                }
+            }
+            .navigationBarTitle("Courses")
+            .listStyle(SidebarListStyle())
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let courseData = CourseData()
+    
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(courseData)
     }
 }

@@ -1,0 +1,34 @@
+[
+    {
+        "id": "560DB265-D647-4906-B152-687E1F63CAC9",
+        "name": "Physics",
+        "code": "1D03",
+        "assignments": [
+            {
+                "id": "9591D90D-F091-4344-A3AE-A7CAC00A9EEB",
+                "name": "LonCAPA 11",
+                "dueDate": "2021-01-05T16:39:57-08:00",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a ultrices leo. Cras vel laoreet orci. Quisque mollis feugiat feugiat. Sed aliquam egestas nibh at."
+            },
+            {
+                "id": "30612273-B295-4303-B9F3-810C6526D40D",
+                "name": "LonCAPA 12",
+                "dueDate": "2021-05-01T16:39:57-08:00",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a ultrices leo. Cras vel laoreet orci. Quisque mollis feugiat feugiat. Sed aliquam egestas nibh at."
+            }
+        ]
+    },
+    {
+        "id": "FB8B1095-B6CF-4C6C-BB2C-6CAE350B9A55",
+        "name": "Math",
+        "code": "1Z03",
+        "assignments": [
+            {
+                "id": "296B8FDE-36F2-4136-9B2D-6ADF0D009804",
+                "name": "Assignment 11",
+                "dueDate": "2020-12-15T16:39:57-08:00",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a ultrices leo. Cras vel laoreet orci. Quisque mollis feugiat feugiat. Sed aliquam egestas nibh at."
+            }
+        ]
+    }
+]
