@@ -11,17 +11,32 @@ import Foundation
 struct SettingsView: View {
     @EnvironmentObject var courseData: CourseData
     
+    @State var showAddCourse = false
+    @State var showAddAssignment = false
+    
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Edit Courses")) {
-                    Button("Add Course", action: {
-                        courseData.addClass(name: "Foo", code: "1BAR0")
-                    })
+            List {
+                Section(header: Text("Edit Content")) {
+                    Button(action: {
+                        self.showAddCourse.toggle()
+                    }) {
+                        Text("Add Course")
+                    }.sheet(isPresented: $showAddCourse) {
+                        AddCourseView(isPresented: self.$showAddCourse)
+                    }
                     
-                    Button("Add Assignment", action: {
-                        courseData.addAssignment(courseId: "560DB265-D647-4906-B152-687E1F63CAC9", name: "Test", description: "FooBar")
-                    })
+                    NavigationLink(destination: RemoveCourseView()) {
+                        Text("Remove Course")
+                    }.disabled(courseData.courses.isEmpty)
+                    
+                    Button(action: {
+                        self.showAddAssignment.toggle()
+                    }) {
+                        Text("Add Assignment")
+                    }.sheet(isPresented: $showAddAssignment) {
+                        AddAssignmentView(isPresented: self.$showAddAssignment)
+                    }.disabled(courseData.courses.isEmpty)
                 }
                 
                 Section(header: Text("Debug")) {
@@ -42,9 +57,23 @@ struct SettingsView: View {
                     Button("Load Legacy", action: {
                         courseData.courses = Bundle.main.decodeOld([Course].self, from: "courses.json")
                     })
+                    
+                    Button("Delete", action: {
+                        do {
+                            try Data.deleteFM(atPath: "course_data")
+                        } catch {
+                            fatalError(error.localizedDescription)
+                        }
+                    })
+                    
+                    Button("Check", action: {
+                        let path = Data.checkFM(atPath: "course_data")
+                        print(path)
+                    })
                 }
             }
-            .navigationBarTitle("Settings")
+            .navigationTitle("Settings")
+            .listStyle(InsetGroupedListStyle())
         }
     }
 }

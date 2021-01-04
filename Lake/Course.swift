@@ -28,18 +28,29 @@ struct Assignment: Codable, Identifiable {
 class CourseData: ObservableObject {
     @Published var courses = [Course]()
     
+    init() {
+        load()
+    }
+    
     func printc() {
         print(courses)
     }
     
     func addClass(name: String, code: String) {
         courses.append(Course(id: UUID(), name: name, code: code, assignments: []))
+        let _ = save()
     }
     
-    func addAssignment(courseId: String, name: String, description: String) {
-        if let index = courses.firstIndex(where: { $0.id.uuidString == courseId }) {
-            let new = Assignment(id: UUID(), name: name, dueDate: Date(), description: description)
+    func removeClass(at offset: IndexSet) {
+        courses.remove(atOffsets: offset)
+        let _ = save()
+    }
+    
+    func addAssignment(course: Course, name: String, dueDate: Date, description: String) {
+        if let index = courses.firstIndex(where: { $0.id == course.id }) {
+            let new = Assignment(id: UUID(), name: name, dueDate: dueDate, description: description)
             courses[index].assignments.append(new)
+            let _ = save()
         }
     }
     
@@ -56,13 +67,14 @@ class CourseData: ObservableObject {
     
     func load() {
         do {
-            guard let data = try Data.loadFM(withFilename: "course_data") else {
-                fatalError()
+            if let data = try Data.loadFM(withFilename: "course_data") {
+                let json = Bundle.main.decode([Course].self, from: data)
+                courses = json
             }
-            let json = Bundle.main.decode([Course].self, from: data)
-            courses = json
         } catch {
-            fatalError(error.localizedDescription)
+            print("Fallback")
+            let json = Bundle.main.decodeOld([Course].self, from: "courses.json")
+            courses = json
         }
     }
 }

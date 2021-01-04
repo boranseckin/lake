@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+extension View {
+    func printView(_ vars: Any...) -> some View {
+        for v in vars { print(v) }
+        return EmptyView()
+    }
+}
+
 struct AppView: View {
     var body: some View {
         TabView {
@@ -25,7 +32,9 @@ struct AppView: View {
 }
 
 struct AppView_Previews: PreviewProvider {
+    static let courseData = CourseData()
+    
     static var previews: some View {
-        AppView()
+        AppView().environmentObject(courseData)
     }
 }

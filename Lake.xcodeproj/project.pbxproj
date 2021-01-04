@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		543058AE25A1E13B00C2C946 /* AddCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543058AD25A1E13B00C2C946 /* AddCourseView.swift */; };
+		543058B125A1E8A400C2C946 /* AddAssignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543058B025A1E8A400C2C946 /* AddAssignmentView.swift */; };
 		548C867925A0759C00A98F3F /* AssignmentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548C867825A0759C00A98F3F /* AssignmentRow.swift */; };
 		548C867C25A0A0B600A98F3F /* AssignmentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548C867B25A0A0B600A98F3F /* AssignmentDetails.swift */; };
 		548C867F25A0A28000A98F3F /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548C867E25A0A28000A98F3F /* AppView.swift */; };
 		548C868225A0A48E00A98F3F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548C868125A0A48E00A98F3F /* SettingsView.swift */; };
+		5494509A25A216F7004C1DA1 /* RemoveCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494509925A216F7004C1DA1 /* RemoveCourseView.swift */; };
 		54AB5DBA259F9D9F007AF40D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AB5DB9259F9D9F007AF40D /* Utils.swift */; };
 		54D8DA9F259F996B000E25DB /* LakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8DA9E259F996B000E25DB /* LakeApp.swift */; };
 		54D8DAA1259F996B000E25DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8DAA0259F996B000E25DB /* ContentView.swift */; };
@@ -21,10 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		543058AD25A1E13B00C2C946 /* AddCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseView.swift; sourceTree = "<group>"; };
+		543058B025A1E8A400C2C946 /* AddAssignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssignmentView.swift; sourceTree = "<group>"; };
 		548C867825A0759C00A98F3F /* AssignmentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentRow.swift; sourceTree = "<group>"; };
 		548C867B25A0A0B600A98F3F /* AssignmentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentDetails.swift; sourceTree = "<group>"; };
 		548C867E25A0A28000A98F3F /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		548C868125A0A48E00A98F3F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5494509925A216F7004C1DA1 /* RemoveCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveCourseView.swift; sourceTree = "<group>"; };
 		54AB5DB9259F9D9F007AF40D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		54D8DA9B259F996B000E25DB /* Lake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D8DA9E259F996B000E25DB /* LakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LakeApp.swift; sourceTree = "<group>"; };
@@ -72,6 +78,9 @@
 				548C867825A0759C00A98F3F /* AssignmentRow.swift */,
 				548C867B25A0A0B600A98F3F /* AssignmentDetails.swift */,
 				548C868125A0A48E00A98F3F /* SettingsView.swift */,
+				543058AD25A1E13B00C2C946 /* AddCourseView.swift */,
+				5494509925A216F7004C1DA1 /* RemoveCourseView.swift */,
+				543058B025A1E8A400C2C946 /* AddAssignmentView.swift */,
 				54D8DAAE259F9A4B000E25DB /* Course.swift */,
 				54AB5DB9259F9D9F007AF40D /* Utils.swift */,
 				54D8DAB1259F9BF1000E25DB /* courses.json */,
@@ -165,9 +174,12 @@
 				54D8DAAF259F9A4B000E25DB /* Course.swift in Sources */,
 				54D8DAA1259F996B000E25DB /* ContentView.swift in Sources */,
 				548C867F25A0A28000A98F3F /* AppView.swift in Sources */,
+				543058B125A1E8A400C2C946 /* AddAssignmentView.swift in Sources */,
 				548C867C25A0A0B600A98F3F /* AssignmentDetails.swift in Sources */,
+				5494509A25A216F7004C1DA1 /* RemoveCourseView.swift in Sources */,
 				54D8DA9F259F996B000E25DB /* LakeApp.swift in Sources */,
 				54AB5DBA259F9D9F007AF40D /* Utils.swift in Sources */,
+				543058AE25A1E13B00C2C946 /* AddCourseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

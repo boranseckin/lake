@@ -14,14 +14,14 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(courseData.courses) { course in
-                    Section(header: Text(course.name)) {
+                    Section(header: Text("\(course.name) - \(course.code)")) {
                         ForEach(course.assignments) { assignment in
                             AssignmentRow(assignment: assignment)
                         }
                     }
                 }
             }
-            .navigationBarTitle("Courses")
+            .navigationTitle("Courses")
             .listStyle(SidebarListStyle())
         }
     }

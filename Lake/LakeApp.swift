@@ -11,10 +11,6 @@ import SwiftUI
 struct LakeApp: App {
     var courseData = CourseData()
     
-    init() {
-        courseData.load()
-    }
-    
     var body: some Scene {
         WindowGroup {
             AppView().environmentObject(courseData)

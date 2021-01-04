@@ -7,6 +7,9 @@
 
 import Foundation
 
+// https://stackoverflow.com/a/40629365/10161292
+extension String: Error {}
+
 extension Bundle {
     func decodeOld<T: Decodable>(_ type: T.Type, from file: String) -> T {
         guard let url = self.url(forResource: file, withExtension: nil) else {
@@ -68,6 +71,10 @@ extension Data {
     }
     
     static func loadFM(withFilename filename: String) throws -> Data? {
+        if !checkFM(atPath: filename) {
+            throw "File does not exist at \(filename)"
+        }
+        
         let fm = FileManager.default
         let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
         if let url = urls.first {
@@ -77,7 +84,32 @@ extension Data {
             let data = try Data(contentsOf: fileURL)
             return data
         }
+
         return nil
+    }
+    
+    static func deleteFM(atPath path: String) throws {
+        let fm = FileManager.default
+        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
+        if let url = urls.first {
+            var fileURL = url.appendingPathComponent(path)
+            fileURL = fileURL.appendingPathExtension("json")
+            
+            try fm.removeItem(atPath: fileURL.path)
+        }
+    }
+    
+    static func checkFM(atPath path: String) -> Bool {
+        let fm = FileManager.default
+        let urls = fm.urls(for: .documentDirectory, in: .userDomainMask)
+        if let url = urls.first {
+            var fileURL = url.appendingPathComponent(path)
+            fileURL = fileURL.appendingPathExtension("json")
+            
+            return fm.fileExists(atPath: fileURL.path)
+        }
+        
+        return false
     }
 }
 
