@@ -28,7 +28,7 @@ struct AddCourseView: View {
                     HStack {
                         Spacer()
                         Button("Add", action: {
-                            courseData.addClass(name: courseName, code: courseCode)
+                            courseData.addCourse(name: courseName, code: courseCode)
                             isPresented.toggle()
                         })
                         Spacer()

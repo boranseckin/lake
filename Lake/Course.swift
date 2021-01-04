@@ -36,21 +36,26 @@ class CourseData: ObservableObject {
         print(courses)
     }
     
-    func addClass(name: String, code: String) {
+    func addCourse(name: String, code: String) {
         courses.append(Course(id: UUID(), name: name, code: code, assignments: []))
-        let _ = save()
+        _ = save()
     }
     
-    func removeClass(at offset: IndexSet) {
+    func removeCourse(at offset: IndexSet) {
         courses.remove(atOffsets: offset)
-        let _ = save()
+        _ = save()
+    }
+    
+    func moveCourse(source: IndexSet, destination: Int) {
+        courses.move(fromOffsets: source, toOffset: destination)
+        _ = save()
     }
     
     func addAssignment(course: Course, name: String, dueDate: Date, description: String) {
         if let index = courses.firstIndex(where: { $0.id == course.id }) {
             let new = Assignment(id: UUID(), name: name, dueDate: dueDate, description: description)
             courses[index].assignments.append(new)
-            let _ = save()
+            _ = save()
         }
     }
     

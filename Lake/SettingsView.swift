@@ -11,31 +11,12 @@ import Foundation
 struct SettingsView: View {
     @EnvironmentObject var courseData: CourseData
     
-    @State var showAddCourse = false
-    @State var showAddAssignment = false
-    
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Edit Content")) {
-                    Button(action: {
-                        self.showAddCourse.toggle()
-                    }) {
-                        Text("Add Course")
-                    }.sheet(isPresented: $showAddCourse) {
-                        AddCourseView(isPresented: self.$showAddCourse)
-                    }
-                    
-                    NavigationLink(destination: RemoveCourseView()) {
-                        Text("Remove Course")
-                    }.disabled(courseData.courses.isEmpty)
-                    
-                    Button(action: {
-                        self.showAddAssignment.toggle()
-                    }) {
-                        Text("Add Assignment")
-                    }.sheet(isPresented: $showAddAssignment) {
-                        AddAssignmentView(isPresented: self.$showAddAssignment)
+                Section(header: Text("Edit")) {
+                    NavigationLink(destination: EditCourseView()) {
+                        Text("Edit Courses")
                     }.disabled(courseData.courses.isEmpty)
                 }
                 

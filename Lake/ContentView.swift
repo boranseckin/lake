@@ -10,6 +10,18 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var courseData: CourseData
     
+    @State var showAddAssignment = false
+    
+    private var addButton: some View {
+        AnyView(Button(action: {
+            showAddAssignment.toggle()
+        }) {
+            Image(systemName: "plus")
+        }).sheet(isPresented: $showAddAssignment, content: {
+            AddAssignmentView(isPresented: $showAddAssignment)
+        })
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -23,6 +35,7 @@ struct ContentView: View {
             }
             .navigationTitle("Courses")
             .listStyle(SidebarListStyle())
+            .navigationBarItems(trailing: addButton)
         }
     }
 }
