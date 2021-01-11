@@ -17,7 +17,7 @@ struct SettingsView: View {
                 Section(header: Text("Edit")) {
                     NavigationLink(destination: EditCourseView()) {
                         Text("Edit Courses")
-                    }.disabled(courseData.courses.isEmpty)
+                    }
                 }
                 
                 Section(header: Text("Debug")) {
@@ -43,7 +43,7 @@ struct SettingsView: View {
                         do {
                             try Data.deleteFM(atPath: "course_data")
                         } catch {
-                            fatalError(error.localizedDescription)
+                            print(error.localizedDescription)
                         }
                     })
                     

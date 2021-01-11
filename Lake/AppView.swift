@@ -15,18 +15,22 @@ extension View {
 }
 
 struct AppView: View {
+    @State private var tabSelection = 1
+    
     var body: some View {
-        TabView {
+        TabView(selection: $tabSelection) {
             ContentView()
                 .tabItem {
                     Image(systemName: "books.vertical.fill")
                     Text("Courses")
                 }
+                .tag(1)
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
+                .tag(2)
         }
     }
 }

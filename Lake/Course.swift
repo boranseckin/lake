@@ -77,9 +77,7 @@ class CourseData: ObservableObject {
                 courses = json
             }
         } catch {
-            print("Fallback")
-            let json = Bundle.main.decodeOld([Course].self, from: "courses.json")
-            courses = json
+            courses = []
         }
     }
 }

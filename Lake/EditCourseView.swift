@@ -47,7 +47,7 @@ struct EditCourseView: View {
             }
         }
         .navigationBarTitle(Text("Edit Courses"), displayMode: .inline)
-        .listStyle(GroupedListStyle())
+        .listStyle(InsetGroupedListStyle())
         .navigationBarItems(trailing: EditButton())
     }
 }

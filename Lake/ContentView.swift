@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var courseData: CourseData
-    
+        
     @State var showAddAssignment = false
     
     private var addButton: some View {
@@ -19,23 +19,34 @@ struct ContentView: View {
             Image(systemName: "plus")
         }).sheet(isPresented: $showAddAssignment, content: {
             AddAssignmentView(isPresented: $showAddAssignment)
-        })
+        }).disabled(courseData.courses.isEmpty)
     }
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(courseData.courses) { course in
-                    Section(header: Text("\(course.name) - \(course.code)")) {
-                        ForEach(course.assignments) { assignment in
-                            AssignmentRow(assignment: assignment)
+            if courseData.courses.isEmpty {
+                VStack {
+                    Text("whoa such emptiness")
+                        .navigationTitle("Courses")
+                        .navigationBarItems(trailing: addButton)
+                        .padding()
+                    
+                    NavigationLink("Add a new course", destination: EditCourseView())
+                }
+            } else {
+                List {
+                    ForEach(courseData.courses) { course in
+                        Section(header: Text("\(course.name) - \(course.code)")) {
+                            ForEach(course.assignments) { assignment in
+                                AssignmentRow(assignment: assignment)
+                            }
                         }
                     }
                 }
+                .navigationTitle("Courses")
+                .listStyle(InsetGroupedListStyle())
+                .navigationBarItems(trailing: addButton)
             }
-            .navigationTitle("Courses")
-            .listStyle(SidebarListStyle())
-            .navigationBarItems(trailing: addButton)
         }
     }
 }
